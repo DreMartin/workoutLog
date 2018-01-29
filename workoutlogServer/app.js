@@ -11,7 +11,7 @@ app.use('/api/test', function (req, res) {
 
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', 'pgDB@1150', {
+var sequelize = new Sequelize('Workoutlog', 'postgres', 'pgDB@1150', {
     host: 'localhost',
     dialect: 'postgres'
 });
@@ -66,4 +66,10 @@ app.post('/api/user', function (req, res) {
 //Need to create a user object and use sequelize to put that user into
 //our database.
 
+
+// =============================================
+// *********************************************
+// DANGER THIS WILL DROP (DELETE) THE USER TABLE
 // User.sync({ force: true });
+// *********************************************
+// =============================================
