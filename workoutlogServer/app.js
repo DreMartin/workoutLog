@@ -1,8 +1,10 @@
-express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
+
+app.use(require('./middleware/headers'));
 
 app.use('/api/test', function(req, res){
-	res.send("Hello World");
+	res.send("Anything you want, you got it!!");
 });
 
 
