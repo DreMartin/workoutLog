@@ -78,24 +78,26 @@ $(function () {
                 });
             },
 
-            
+
             loginout: function () {
                 if (window.localStorage.getItem("sessionToken")) {
                     window.localStorage.removeItem("sessionToken");
                     $("#loginout").text("Login");
                 }
-                
+
                 // TODO: on logout make sure stuff is disabled
             }
         },
 
-);
+    );
 
-//bind events
-$("#signup").on("click", WorkoutLog.signup); $("#login").on("click", WorkoutLog.login); $("#loginout").on("click", WorkoutLog.loginout);
+    //bind events
+    $("#signup").on("click", WorkoutLog.signup);
+    $("#login").on("click", WorkoutLog.login);
+    $("#loginout").on("click", WorkoutLog.loginout);
 
-if (window.localStorage.getItem("sessionToken")) {
-    $("#loginout").text("Logout");
-}
+    if (window.localStorage.getItem("sessionToken")) {
+        $("#loginout").text("Logout");
+    }
 
 });
