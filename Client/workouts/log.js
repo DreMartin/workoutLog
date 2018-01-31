@@ -26,48 +26,54 @@ $(function () {
             },
 
             create: function () {
-                var itsLog = { 
+                var itsLog = {
                     desc: $("#log-description").val(),
-                     result: $("#log-result").val(),
-                     def: $("#log-definition option:selected").text()
-                    };
-                    var postData = { log: itsLog };
-                    var logger = $.ajax({
-                     type: "POST",
-                     url: WorkoutLog.API_BASE + "log",
-                     data: JSON.stringify(postData),
-                     contentType: "application/json"
-                    });
-                
-                    logger.done(function(data) {
-                        WorkoutLog.log.workouts.push(data);
-                        console.log(WorkoutLog.log.workouts);
-                    });
+                    result: $("#log-result").val(),
+                    def: $("#log-definition option:selected").text()
+                };
+                var postData = {
+                    log: itsLog
+                };
+                var logger = $.ajax({
+                    type: "POST",
+                    url: WorkoutLog.API_BASE + "log",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json"
+                });
+
+                logger.done(function (data) {
+                    WorkoutLog.log.workouts.push(data);
+                    console.log(WorkoutLog.log.workouts);
+
+                    $("#log-description").val("");
+                    $("#log-result").val("");
+                    $('a[href="#history"]').tab("show");
+                });
             },
 
             fetchAll: function () {
                 var fetchDefs = $.ajax({
-                    type: "GET",
-                    url: WorkoutLog.API_BASE + "log",
-                    headers: {
-                        "authorization": window.localStorage.getItem("sessionToken")
-                    }
-                 })
-                 .done(function(data) {
-                    WorkoutLog.log.workouts = data;
-                 })
-                 .fail(function(err) {
-                    console.log(err);
-                 });
+                        type: "GET",
+                        url: WorkoutLog.API_BASE + "log",
+                        headers: {
+                            "authorization": window.localStorage.getItem("sessionToken")
+                        }
+                    })
+                    .done(function (data) {
+                        WorkoutLog.log.workouts = data;
+                    })
+                    .fail(function (err) {
+                        console.log(err);
+                    });
             }
         }
     });
 
     //Click the button and create a log entry.
-	$("#log-save").on("click", WorkoutLog.log.create);
+    $("#log-save").on("click", WorkoutLog.log.create);
 
-	if (window.localStorage.getItem("sessionToken")){
-		WorkoutLog.log.fetchAll();
-	}
-	// ^^^^All code above the closing^^^^
+    if (window.localStorage.getItem("sessionToken")) {
+        WorkoutLog.log.fetchAll();
+    }
+    // ^^^^All code above the closing^^^^
 });

@@ -29,15 +29,24 @@ $(function () {
                             console.log(data.sessionToken);
                         }
 
-                        $("#signup-modal").modal("hide");
-                        $(".disabled").removeClass("disabled");
-                        $("#loginout").text("Logout");
-
                         if (data.sessionToken) {
                             WorkoutLog.setAuthHeader(data.sessionToken);
                             WorkoutLog.definition.fetchAll();
                             WorkoutLog.log.fetchAll();
+
+                            //remove after test
+                            console.log('success');
+                            console.log(data);
                         }
+
+                        $("#signup-modal").modal("hide");
+                        $(".disabled").removeClass("disabled");
+                        $("#loginout").text("Logout");
+                        $("#su_username").val("");
+                        $("#su_password").val("");
+
+                        //routing
+                        $('a[href="#define"]').tab('show');
 
                     })
                     .fail(function () {
@@ -75,15 +84,21 @@ $(function () {
                         WorkoutLog.setAuthHeader(data.sessionToken);
                     }
 
-                    $("#login-modal").modal("hide");
-                    $(".disabled").removeClass("disabled");
-                    $("#loginout").text("Logout");
-
-                    if (data.sessionToken) {							
+                    
+                    if (data.sessionToken) {
                         WorkoutLog.setAuthHeader(data.sessionToken);
                         WorkoutLog.definition.fetchAll();
                         WorkoutLog.log.fetchAll();
                     }
+                    
+                    //TODO: add loginc to set user and auth token
+                    $("#login-modal").modal("hide");
+                    $(".disabled").removeClass("disabled");
+                    $("#loginout").text("Logout");
+
+                    $("#li_username").val("");
+                    $("#li_password").val("");
+                    $('a[href="#define"]').tab("show");
 
                 }).fail(function () {
                     $("#li_error").text("There was an issue with sign up").show();
