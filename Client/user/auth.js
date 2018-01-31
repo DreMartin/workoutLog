@@ -33,6 +33,12 @@ $(function () {
                         $(".disabled").removeClass("disabled");
                         $("#loginout").text("Logout");
 
+                        if (data.sessionToken) {
+                            WorkoutLog.setAuthHeader(data.sessionToken);
+                            WorkoutLog.definition.fetchAll();
+                            WorkoutLog.log.fetchAll();
+                        }
+
                     })
                     .fail(function () {
                         $("#su_error").text("There was an issue with sign up").show();
@@ -72,6 +78,12 @@ $(function () {
                     $("#login-modal").modal("hide");
                     $(".disabled").removeClass("disabled");
                     $("#loginout").text("Logout");
+
+                    if (data.sessionToken) {							
+                        WorkoutLog.setAuthHeader(data.sessionToken);
+                        WorkoutLog.definition.fetchAll();
+                        WorkoutLog.log.fetchAll();
+                    }
 
                 }).fail(function () {
                     $("#li_error").text("There was an issue with sign up").show();

@@ -11,11 +11,9 @@
 
   <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
+  
+  
 </head>
 
 <body>
@@ -38,9 +36,9 @@
     <li>
       <a href="#" id="testAPI">Test API</a>
     </li>
-
+    
   </ul>
-
+  
   <div class="container">
     <div class="tab-content">
       <div class="tab-pane active" id="home">
@@ -55,7 +53,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- DEFINE -->
   <div class="tab-pane" id="define">
     <h2>Define</h2>
@@ -69,7 +67,24 @@
     </select>
     <button id="def-save" class="btn btn-primary">Save</button>
   </div>
-
+  
+  <div class="tab-pane" id="log">
+    <h2>log!</h2>
+    <label for="Result"></label>
+    <input type="text" class="form-control" id="log-result">
+    <label for="Workout select:"></label>
+    <select name="" id="log-definition" class="form-control">
+    </select>
+    <label for="notes"></label>
+    <textarea id="log-description" rows="3" class="form-control"></textarea>
+    <button class="btn btn-primary" id="log-save">Save</button>
+  </div>
+  <div class="tab-pane" id="history">
+    <h2>History</h2>
+    <ul class="list-group" id="history-list">
+    </ul>
+  </div>
+  
   <div class="modal fade" id="login-modal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -93,7 +108,7 @@
       </div>
     </div>
   </div>
-
+  
   <!--sign up-->
   <div class="modal fade" id="signup-modal" role="dialog">
     <div class="modal-dialog">
@@ -118,13 +133,16 @@
       </div>
     </div>
   </div>
-  </div>
+</div>
 
 
 
-  <script src="./app.js"></script>
-  <script src="./user/auth.js"></script>
-  <script src="./workouts/define.js"></script>
+<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./app.js"></script>
+<script src="./user/auth.js"></script>
+<script src="./workouts/define.js"></script>
+<script src="./workouts/log.js"></script>
 </body>
 
 </html>
