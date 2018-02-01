@@ -44,6 +44,7 @@ $(function () {
                         $("#loginout").text("Logout");
                         $("#su_username").val("");
                         $("#su_password").val("");
+                        $('a[href="#define"]').tab("show");
 
                         //routing
                         $('a[href="#define"]').tab('show');

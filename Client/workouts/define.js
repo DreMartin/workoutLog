@@ -26,6 +26,7 @@ $(function () {
                     $("#def-description").val("");
                     $("#def-logtype").val("");
                     $('a[href="#log"]').tab("show");
+                    
 
                 });
             },
